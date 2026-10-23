@@ -1,0 +1,53 @@
+# Map Coloring Problem using 4 Colors
+
+colors = ["Green", "Blue", "Yellow", "Red"]
+
+graph = {
+    "Germany": ["Poland", "Czech Republic", "Switzerland", "Austria"],
+    "Poland": ["Germany", "Czech Republic", "Slovakia"],
+    "Czech Republic": ["Germany", "Poland", "Slovakia", "Austria"],
+    "Slovakia": ["Poland", "Czech Republic", "Austria", "Hungary"],
+    "Switzerland": ["Germany", "Austria", "Italy"],
+    "Austria": ["Germany", "Czech Republic", "Slovakia",
+                "Switzerland", "Hungary", "Italy", "Slovenia"],
+    "Hungary": ["Slovakia", "Austria", "Slovenia"],
+    "Italy": ["Switzerland", "Austria", "Slovenia"],
+    "Slovenia": ["Austria", "Hungary", "Italy"]
+}
+
+assigned = {}
+
+
+def is_safe(country, color):
+    for neighbor in graph[country]:
+        if assigned.get(neighbor) == color:
+            return False
+    return True
+
+
+def solve(countries, index=0):
+    if index == len(countries):
+        return True
+
+    country = countries[index]
+
+    for color in colors:
+        if is_safe(country, color):
+            assigned[country] = color
+
+            if solve(countries, index + 1):
+                return True
+
+            del assigned[country]
+
+    return False
+
+
+countries = list(graph.keys())
+
+if solve(countries):
+    print("Map Coloring Solution:\n")
+    for country in countries:
+        print(country, ":", assigned[country])
+else:
+    print("No solution exists.")
