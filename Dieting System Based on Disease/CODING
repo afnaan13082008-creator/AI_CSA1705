@@ -1,0 +1,31 @@
+% Example diet knowledge base
+
+diet(diabetes, low_sugar_food).
+diet(diabetes, green_vegetables).
+diet(diabetes, whole_grains).
+
+diet(obesity, low_calorie_food).
+diet(obesity, fruits).
+diet(obesity, vegetables).
+
+diet(anemia, iron_rich_food).
+diet(anemia, spinach).
+diet(anemia, beans).
+
+diet(hypertension, low_salt_food).
+diet(hypertension, fruits).
+diet(hypertension, vegetables).
+
+diet(heart_disease, low_fat_food).
+diet(heart_disease, whole_grains).
+diet(heart_disease, fruits).
+
+suggest_diet(Disease, Food) :-
+    diet(Disease, Food).
+
+show_diet(Disease) :-
+    diet(Disease, Food),
+    write(Food), nl,
+    fail.
+
+show_diet(_).
