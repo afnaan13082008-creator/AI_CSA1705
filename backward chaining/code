@@ -1,0 +1,37 @@
+% Facts
+
+parent(john, mary).
+parent(mary, alice).
+parent(alice, bob).
+
+male(john).
+male(bob).
+
+female(mary).
+female(alice).
+
+
+% Rules
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+ancestor(X, Y) :-
+    parent(X, Y).
+
+ancestor(X, Y) :-
+    parent(X, Z),
+    ancestor(Z, Y).
+
+check_grandparent(X, Y) :-
+    grandparent(X, Y).
+
+check_ancestor(X, Y) :-
+    ancestor(X, Y).
+
+check_gender(X) :-
+    male(X).
+
+check_gender(X) :-
+    female(X).
