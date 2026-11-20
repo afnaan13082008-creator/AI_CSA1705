@@ -1,0 +1,34 @@
+% Bird facts
+
+bird(parrot).
+bird(eagle).
+bird(pigeon).
+bird(ostrich).
+bird(penguin).
+bird(sparrow).
+
+
+% Flying and non-flying birds
+
+can_fly(parrot).
+can_fly(eagle).
+can_fly(pigeon).
+can_fly(sparrow).
+
+cannot_fly(ostrich).
+cannot_fly(penguin).
+
+
+% Display flying ability
+
+check_fly(Bird) :-
+    can_fly(Bird),
+    write(Bird), write(' can fly.'), nl.
+
+check_fly(Bird) :-
+    cannot_fly(Bird),
+    write(Bird), write(' cannot fly.'), nl.
+
+
+check_bird(Bird) :-
+    bird(Bird).
