@@ -1,0 +1,4 @@
+% Facts
+
+eats(anil, peanuts).
+alive(anil).
