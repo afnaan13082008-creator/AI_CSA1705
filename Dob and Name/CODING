@@ -1,0 +1,12 @@
+% Person database: name and date of birth
+person(john, date(15, 5, 2002)).
+person(alice, date(20, 8, 2003)).
+person(bob, date(10, 1, 2001)).
+person(peter, date(25, 12, 2002)).
+person(anna, date(5, 3, 2004)).
+
+find_dob(Name, DOB) :-
+    person(Name, DOB).
+
+find_year(Name, Year) :-
+    person(Name, date(_, _, Year)).
