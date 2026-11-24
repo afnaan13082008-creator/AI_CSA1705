@@ -1,0 +1,4 @@
+% Facts
+
+food(apple).
+food(vegetables).
