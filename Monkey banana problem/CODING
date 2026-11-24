@@ -1,0 +1,31 @@
+% State format:
+% state(MonkeyPosition, MonkeyLevel, BoxPosition, HasBanana)
+
+move(state(door, floor, window, has_not),
+     state(window, floor, window, has_not),
+     walk_to_window).
+
+move(state(window, floor, window, has_not),
+     state(middle, floor, middle, has_not),
+     push_box).
+
+move(state(middle, floor, middle, has_not),
+     state(middle, on_box, middle, has_not),
+     climb_box).
+
+move(state(middle, on_box, middle, has_not),
+     state(middle, on_box, middle, has),
+     grasp_banana).
+
+goal(state(_, _, _, has)).
+
+solve(State, []) :-
+    goal(State).
+
+solve(State, [Action | Rest]) :-
+    move(State, NewState, Action),
+    solve(NewState, Rest).
+
+start :-
+    solve(state(door, floor, window, has_not), Actions),
+    write(Actions), nl.
