@@ -1,0 +1,9 @@
+% Sample facts used to test the rule
+
+food(apple).
+food(vegetables).
+
+% John likes anything that is food
+
+likes(john, X) :-
+    food(X).
