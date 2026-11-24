@@ -1,0 +1,32 @@
+% Initial facts
+initial_fact(sunny).
+initial_fact(warm).
+
+% Rules: rule(Conditions, Conclusion)
+rule([sunny], bright_day).
+rule([warm], good_weather).
+rule([bright_day, good_weather], picnic).
+
+all_true([], _).
+all_true([X | Rest], Facts) :-
+    member(X, Facts),
+    all_true(Rest, Facts).
+
+forward_chain(Facts, Final) :-
+    findall(Y,
+        (rule(Conditions, Y),
+         all_true(Conditions, Facts),
+         \+ member(Y, Facts)),
+        NewFacts),
+    append(Facts, NewFacts, Updated),
+    sort(Updated, Sorted),
+    ( Sorted = Facts
+    -> Final = Facts
+    ;  forward_chain(Sorted, Final)
+    ).
+
+start :-
+    findall(X, initial_fact(X), Facts),
+    sort(Facts, Sorted),
+    forward_chain(Sorted, Result),
+    write('Derived Facts: '), write(Result), nl.
