@@ -1,0 +1,30 @@
+% Example symptom facts
+
+symptom(fever).
+symptom(cough).
+symptom(headache).
+symptom(cold).
+symptom(sneezing).
+symptom(body_pain).
+
+% Example diagnosis rules
+
+disease(flu) :-
+    symptom(fever),
+    symptom(cough),
+    symptom(body_pain).
+
+disease(common_cold) :-
+    symptom(cold),
+    symptom(sneezing),
+    symptom(cough).
+
+disease(malaria) :-
+    symptom(fever),
+    symptom(headache),
+    symptom(body_pain).
+
+diagnosis(Disease) :-
+    disease(Disease),
+    write('Possible disease: '),
+    write(Disease), nl.
