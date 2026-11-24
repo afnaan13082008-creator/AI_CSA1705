@@ -1,0 +1,15 @@
+% Fruit and colour facts
+
+fruit(apple, red).
+fruit(banana, yellow).
+fruit(orange, orange).
+fruit(grapes, purple).
+fruit(mango, yellow).
+fruit(guava, green).
+fruit(strawberry, red).
+
+fruit_color(Fruit, Color) :-
+    fruit(Fruit, Color).
+
+color_fruit(Color, Fruit) :-
+    fruit(Fruit, Color).
