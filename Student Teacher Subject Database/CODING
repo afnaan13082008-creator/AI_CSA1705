@@ -1,0 +1,25 @@
+% Student facts
+student(101, john).
+student(102, alice).
+student(103, bob).
+student(104, david).
+
+% Teacher facts
+teacher(t1, ramesh).
+teacher(t2, priya).
+teacher(t3, kumar).
+
+% Subject facts
+subject(s1, mathematics).
+subject(s2, physics).
+subject(s3, computer_science).
+
+% Relationships
+handles(t1, s1).
+handles(t2, s2).
+handles(t3, s3).
+
+studies(101, s1).
+studies(102, s2).
+studies(103, s3).
+studies(104, s1).
