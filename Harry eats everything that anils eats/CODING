@@ -1,0 +1,8 @@
+% Sample fact about Anil
+
+eats(anil, peanuts).
+
+% Harry eats everything that Anil eats
+
+eats(harry, X) :-
+    eats(anil, X).
